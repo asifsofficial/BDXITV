@@ -1,0 +1,307 @@
+#EXTM3U x-tvg-url=""
+
+#EXTINF:-1 tvg-id="1" group-title="Sports",T SPORTS
+http://localhost/redforce/proxy.php?stream=1
+
+#EXTINF:-1 tvg-id="2" group-title="Sports",STAR SPORTS 1 HD
+http://localhost/redforce/proxy.php?stream=2
+
+#EXTINF:-1 tvg-id="3" group-title="Sports",STAR SPORTS 2 HD
+http://localhost/redforce/proxy.php?stream=3
+
+#EXTINF:-1 tvg-id="4" group-title="Hindi",COLORS HD
+http://localhost/redforce/proxy.php?stream=4
+
+#EXTINF:-1 tvg-id="5" group-title="Hindi",AND PICTURES HD
+http://localhost/redforce/proxy.php?stream=5
+
+#EXTINF:-1 tvg-id="6" group-title="English",SONY BBC EARTH HD
+http://localhost/redforce/proxy.php?stream=6
+
+#EXTINF:-1 tvg-id="7" group-title="Hindi",ZEE TV HD
+http://localhost/redforce/proxy.php?stream=7
+
+#EXTINF:-1 tvg-id="8" group-title="Kids",CARTOON NETWORK
+http://localhost/redforce/proxy.php?stream=8
+
+#EXTINF:-1 tvg-id="9" group-title="English",TLC HD
+http://localhost/redforce/proxy.php?stream=9
+
+#EXTINF:-1 tvg-id="10" group-title="Hindi",COLORS CINEPLEX HD
+http://localhost/redforce/proxy.php?stream=10
+
+#EXTINF:-1 tvg-id="11" group-title="Hindi",SONY ENT HD
+http://localhost/redforce/proxy.php?stream=11
+
+#EXTINF:-1 tvg-id="12" group-title="Bangla",COLORS BANGLA HD
+http://localhost/redforce/proxy.php?stream=12
+
+#EXTINF:-1 tvg-id="13" group-title="Hindi",ZEE CINEMA HD
+http://localhost/redforce/proxy.php?stream=13
+
+#EXTINF:-1 tvg-id="14" group-title="Bangla",ZEE BANGLA HD
+http://localhost/redforce/proxy.php?stream=14
+
+#EXTINF:-1 tvg-id="15" group-title="English",HISTORY TV HD
+http://localhost/redforce/proxy.php?stream=15
+
+#EXTINF:-1 tvg-id="16" group-title="Sports",STAR SPORTS SELECT 2 HD
+http://localhost/redforce/proxy.php?stream=16
+
+#EXTINF:-1 tvg-id="17" group-title="Bangla",SUN BANGLA HD
+http://localhost/redforce/proxy.php?stream=17
+
+#EXTINF:-1 tvg-id="18" group-title="Bangla",STAR JALSHA HD
+http://localhost/redforce/proxy.php?stream=18
+
+#EXTINF:-1 tvg-id="19" group-title="Bangla",JALSHA MOVIES HD
+http://localhost/redforce/proxy.php?stream=19
+
+#EXTINF:-1 tvg-id="20" group-title="Hindi",STAR GOLD HD
+http://localhost/redforce/proxy.php?stream=20
+
+#EXTINF:-1 tvg-id="21" group-title="Hindi",SONY MAX HD
+http://localhost/redforce/proxy.php?stream=21
+
+#EXTINF:-1 tvg-id="22" group-title="English",DISCOVERY HD
+http://localhost/redforce/proxy.php?stream=22
+
+#EXTINF:-1 tvg-id="23" group-title="English",NATGEO WILD HD
+http://localhost/redforce/proxy.php?stream=23
+
+#EXTINF:-1 tvg-id="24" group-title="Hindi",STAR PLUS HD
+http://localhost/redforce/proxy.php?stream=24
+
+#EXTINF:-1 tvg-id="25" group-title="English",NATGEO HD
+http://localhost/redforce/proxy.php?stream=25
+
+#EXTINF:-1 tvg-id="26" group-title="English",ANIMAL PLANET HD
+http://localhost/redforce/proxy.php?stream=26
+
+#EXTINF:-1 tvg-id="27" group-title="English",STAR MOVIES SELECT HD
+http://localhost/redforce/proxy.php?stream=27
+
+#EXTINF:-1 tvg-id="28" group-title="Sports",STAR SELECT 1 HD
+http://localhost/redforce/proxy.php?stream=28
+
+#EXTINF:-1 tvg-id="29" group-title="Sports",SONY SPORTS 2 HD
+http://localhost/redforce/proxy.php?stream=29
+
+#EXTINF:-1 tvg-id="30" group-title="Sports",SONY SPORTS 3
+http://localhost/redforce/proxy.php?stream=30
+
+#EXTINF:-1 tvg-id="31" group-title="Sports",STAR SPORTS 3
+http://localhost/redforce/proxy.php?stream=31
+
+#EXTINF:-1 tvg-id="32" group-title="English",SONY PIX HD
+http://localhost/redforce/proxy.php?stream=32
+
+#EXTINF:-1 tvg-id="33" group-title="English",MNX HD
+http://localhost/redforce/proxy.php?stream=33
+
+#EXTINF:-1 tvg-id="34" group-title="English",ROMEDY NOW
+http://localhost/redforce/proxy.php?stream=34
+
+#EXTINF:-1 tvg-id="36" group-title="English",MN PLUS
+http://localhost/redforce/proxy.php?stream=36
+
+#EXTINF:-1 tvg-id="37" group-title="English",ZEE CAFE HD
+http://localhost/redforce/proxy.php?stream=37
+
+#EXTINF:-1 tvg-id="38" group-title="English",STAR MOVIES HD
+http://localhost/redforce/proxy.php?stream=38
+
+#EXTINF:-1 tvg-id="39" group-title="English",MOVIES NOW HD
+http://localhost/redforce/proxy.php?stream=39
+
+#EXTINF:-1 tvg-id="40" group-title="Sports",EUROSPORTS HD
+http://localhost/redforce/proxy.php?stream=40
+
+#EXTINF:-1 tvg-id="42" group-title="Hindi",ZOOM
+http://localhost/redforce/proxy.php?stream=42
+
+#EXTINF:-1 tvg-id="43" group-title="Bangla",ZEE BANGLA CINEMA
+http://localhost/redforce/proxy.php?stream=43
+
+#EXTINF:-1 tvg-id="44" group-title="Hindi",SONY AAT
+http://localhost/redforce/proxy.php?stream=44
+
+#EXTINF:-1 tvg-id="45" group-title="Kids",SONIC
+http://localhost/redforce/proxy.php?stream=45
+
+#EXTINF:-1 tvg-id="46" group-title="Kids",NICK
+http://localhost/redforce/proxy.php?stream=46
+
+#EXTINF:-1 tvg-id="47" group-title="Bangla",COLORS BANGLA CINEMA
+http://localhost/redforce/proxy.php?stream=47
+
+#EXTINF:-1 tvg-id="48" group-title="Kids",POGO
+http://localhost/redforce/proxy.php?stream=48
+
+#EXTINF:-1 tvg-id="49" group-title="Kids",HUNGAMA
+http://localhost/redforce/proxy.php?stream=49
+
+#EXTINF:-1 tvg-id="50" group-title="Kids",BAL BHARAT
+http://localhost/redforce/proxy.php?stream=50
+
+#EXTINF:-1 tvg-id="51" group-title="Kids",NICK JR
+http://localhost/redforce/proxy.php?stream=51
+
+#EXTINF:-1 tvg-id="53" group-title="Hindi",ZING
+http://localhost/redforce/proxy.php?stream=53
+
+#EXTINF:-1 tvg-id="54" group-title="Bangla",NAGORIK TV
+http://localhost/redforce/proxy.php?stream=54
+
+#EXTINF:-1 tvg-id="55" group-title="English",BBC NEWS
+http://localhost/redforce/proxy.php?stream=55
+
+#EXTINF:-1 tvg-id="56" group-title="Bangla",GTV
+http://localhost/redforce/proxy.php?stream=56
+
+#EXTINF:-1 tvg-id="61" group-title="English",AND XPLORE
+http://localhost/redforce/proxy.php?stream=61
+
+#EXTINF:-1 tvg-id="62" group-title="English",TRAVEL XP
+http://localhost/redforce/proxy.php?stream=62
+
+#EXTINF:-1 tvg-id="66" group-title="Sports",GOLF SPORTS
+http://localhost/redforce/proxy.php?stream=66
+
+#EXTINF:-1 tvg-id="67" group-title="English",LOVE NATURE HD
+http://localhost/redforce/proxy.php?stream=67
+
+#EXTINF:-1 tvg-id="68" group-title="Bangla",DURANTA TV
+http://localhost/redforce/proxy.php?stream=68
+
+#EXTINF:-1 tvg-id="69" group-title="Hindi",STAR GOLD 2 HD
+http://localhost/redforce/proxy.php?stream=69
+
+#EXTINF:-1 tvg-id="71" group-title="Hindi",STAR GOLD SELECT HD
+http://localhost/redforce/proxy.php?stream=71
+
+#EXTINF:-1 tvg-id="72" group-title="Sports",SONY SPORTS 4
+http://localhost/redforce/proxy.php?stream=72
+
+#EXTINF:-1 tvg-id="74" group-title="Sports",SONY SPORTS 1 HD
+http://localhost/redforce/proxy.php?stream=74
+
+#EXTINF:-1 tvg-id="75" group-title="Kids",SUPER HUNGAMA
+http://localhost/redforce/proxy.php?stream=75
+
+#EXTINF:-1 tvg-id="76" group-title="Bangla",JAMUNA TV
+http://localhost/redforce/proxy.php?stream=76
+
+#EXTINF:-1 tvg-id="77" group-title="Bangla",INDEPENDENT TV
+http://localhost/redforce/proxy.php?stream=77
+
+#EXTINF:-1 tvg-id="78" group-title="Bangla",MAASRANGA HD
+http://localhost/redforce/proxy.php?stream=78
+
+#EXTINF:-1 tvg-id="79" group-title="Bangla",SOMOY TV HD
+http://localhost/redforce/proxy.php?stream=79
+
+#EXTINF:-1 tvg-id="80" group-title="Bangla",ATN BANGLA HD
+http://localhost/redforce/proxy.php?stream=80
+
+#EXTINF:-1 tvg-id="81" group-title="Bangla",CHANNEL I HD
+http://localhost/redforce/proxy.php?stream=81
+
+#EXTINF:-1 tvg-id="82" group-title="Bangla",CHANNEL 24 HD
+http://localhost/redforce/proxy.php?stream=82
+
+#EXTINF:-1 tvg-id="83" group-title="Islamic",MADANI TV HD
+http://localhost/redforce/proxy.php?stream=83
+
+#EXTINF:-1 tvg-id="84" group-title="Bangla",ENTERR 10 BANGLA
+http://localhost/redforce/proxy.php?stream=84
+
+#EXTINF:-1 tvg-id="85" group-title="English",ALJAZEERA HD
+http://localhost/redforce/proxy.php?stream=85
+
+#EXTINF:-1 tvg-id="86" group-title="Islamic",PEACE TV BANGLA HD
+http://localhost/redforce/proxy.php?stream=86
+
+#EXTINF:-1 tvg-id="87" group-title="Sports",FAST SPORTS HD
+http://localhost/redforce/proxy.php?stream=87
+
+#EXTINF:-1 tvg-id="88" group-title="Sports",A SPORTS HD
+http://localhost/redforce/proxy.php?stream=88
+
+#EXTINF:-1 tvg-id="89" group-title="Hindi",HUM TV
+http://localhost/redforce/proxy.php?stream=89
+
+#EXTINF:-1 tvg-id="90" group-title="English",GEO NEWS HD
+http://localhost/redforce/proxy.php?stream=90
+
+#EXTINF:-1 tvg-id="91" group-title="Hindi",LOTUS TV HD
+http://localhost/redforce/proxy.php?stream=91
+
+#EXTINF:-1 tvg-id="92" group-title="Sports",PTV SPORTS HD
+http://localhost/redforce/proxy.php?stream=92
+
+#EXTINF:-1 tvg-id="93" group-title="Kids",SONY YAY
+http://localhost/redforce/proxy.php?stream=93
+
+#EXTINF:-1 tvg-id="95" group-title="Bangla",ATN NEWS HD
+http://localhost/redforce/proxy.php?stream=95
+
+#EXTINF:-1 tvg-id="97" group-title="English",AXN HD
+http://localhost/redforce/proxy.php?stream=97
+
+#EXTINF:-1 tvg-id="100" group-title="Hindi",STAR BHARAT HD
+http://localhost/redforce/proxy.php?stream=100
+
+#EXTINF:-1 tvg-id="101" group-title="Sports",SONY SPORTS 5 HD
+http://localhost/redforce/proxy.php?stream=101
+
+#EXTINF:-1 tvg-id="102" group-title="English",BBC EARTH HD
+http://localhost/redforce/proxy.php?stream=102
+
+#EXTINF:-1 tvg-id="104" group-title="Sports",SSC SPORTS 5 HD
+http://localhost/redforce/proxy.php?stream=104
+
+#EXTINF:-1 tvg-id="105" group-title="Sports",SSC SPORTS
+http://localhost/redforce/proxy.php?stream=105
+
+#EXTINF:-1 tvg-id="106" group-title="English",MAX 2
+http://localhost/redforce/proxy.php?stream=106
+
+#EXTINF:-1 tvg-id="107" group-title="English",MAX 1
+http://localhost/redforce/proxy.php?stream=107
+
+#EXTINF:-1 tvg-id="108" group-title="English",FASHION TV HD
+http://localhost/redforce/proxy.php?stream=108
+
+#EXTINF:-1 tvg-id="109" group-title="Bangla",BTV HD
+http://localhost/redforce/proxy.php?stream=109
+
+#EXTINF:-1 tvg-id="113" group-title="Bangla",DBC NEWS HD
+http://localhost/redforce/proxy.php?stream=113
+
+#EXTINF:-1 tvg-id="114" group-title="Bangla",EKATTOR TV HD
+http://localhost/redforce/proxy.php?stream=114
+
+#EXTINF:-1 tvg-id="115" group-title="Hindi",9XM MUSIC
+http://localhost/redforce/proxy.php?stream=115
+
+#EXTINF:-1 tvg-id="116" group-title="Bangla",NEWS 24 HD
+http://localhost/redforce/proxy.php?stream=116
+
+#EXTINF:-1 tvg-id="118" group-title="Hindi",Music India
+http://localhost/redforce/proxy.php?stream=118
+
+#EXTINF:-1 tvg-id="119" group-title="Hindi",MTV India
+http://localhost/redforce/proxy.php?stream=119
+
+#EXTINF:-1 tvg-id="120" group-title="Bangla",Sangeet Bangla
+http://localhost/redforce/proxy.php?stream=120
+
+#EXTINF:-1 tvg-id="121" group-title="Kids",DISNEY JUNIOR
+http://localhost/redforce/proxy.php?stream=121
+
+#EXTINF:-1 tvg-id="122" group-title="Bangla",Asiah TV
+http://localhost/redforce/proxy.php?stream=122
+
+#EXTINF:-1 tvg-id="124" group-title="Bangla",Global TV
+http://localhost/redforce/proxy.php?stream=124
