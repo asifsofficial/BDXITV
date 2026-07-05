@@ -1225,6 +1225,16 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// ── Check Server Speed on site visit ──
+(function checkServerSpeed() {
+  fetch('proxy.php?check=1')
+    .then(r => r.json())
+    .then(data => {
+      console.log("Preferred server checked:", data.preferred);
+    })
+    .catch(e => console.warn("Background server check failed:", e));
+})();
+
 // ── URL param: ?ch=ID ─────────────────────────
 (function checkUrlParam() {
   const p = new URLSearchParams(location.search);
