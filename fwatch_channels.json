@@ -1,0 +1,372 @@
+[
+    {
+        "id": "beIN Turkey Shaka",
+        "name": "beIN",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/b8c15da0b2_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/andro.evrenesoglu57.click\/checklist\/androstreamliveexn4.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/nhjjhhjhjjhfjj.pages.dev\/1782601877\/756dff3bf63242728900fab86ae5869e\/CKNBZ7vok8P-_PEHmlLVipFRTbmgvi5xv8gU0s2IS38\/beinsportsmax-sa.m3u8",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "CCTV CHINA",
+        "name": "CCTV CHINA - HD",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/1f2f08c3c5_china-central-television-logo-png_seeklogo-468614.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/live01-cn-ali.bvjicd.com\/live\/74501104.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/www.rtmpcdn.com\/live\/cctv5.m3u8",
+                "priority": 2
+            },
+            {
+                "url": "https:\/\/live.wxinxi.com\/live\/25816724_sb2maw7iluj1ghr92sk5siud28tpimx0.m3u8",
+                "priority": 3
+            }
+        ],
+        "player_engine": "shaka",
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "DSport",
+        "name": "DSports",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d4dbb56093_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte.cache.aiv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/3gg2jnixjn\/out\/v1\/e1840e01f3f14563b66bbb944d5cc54c\/cenc.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/1nyaler.streamhostingcdn.top\/stream\/106\/index.m3u8",
+                "priority": 2
+            },
+            {
+                "url": "https:\/\/otte.live.fly.ww.aiv-cdn.net\/gru-nitro\/live\/clients\/dash\/enc\/3gg2jnixjn\/out\/v1\/e1840e01f3f14563b66bbb944d5cc54c\/cenc.mpd",
+                "priority": 3
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/pdx-nitro\/live\/clients\/dash\/enc\/x0srg3jjpz\/out\/v1\/f779c49314394d61886d63f58d9d52e4\/cenc.mpd",
+                "priority": 4
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "WC TV",
+        "name": "WC TV (ENG)",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/e649afca81_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/qp-pldt-live-bpk-ucd-prod.akamaized.net\/bpk-tv\/fifa_ppv1\/default\/index.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/fwatch.tv\/proxy_header.php?url=https:\/\/qp-pldt-live-bpk-ucd-prod.akamaized.net\/bpk-tv\/fifa_ppv1\/default\/index.mpd",
+                "priority": 2
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "tsn_sports___aq",
+        "name": "TSN Sports 1",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d629d6a9bc_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte.cache.aiv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 2
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/pdx-nitro\/live\/clients\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 3
+            },
+            {
+                "url": "https:\/\/abgh3fbaaaaaaaambylpff72g6up6.ta.bia-cf.live.pv-cdn.net\/iad-nitro\/live\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 4
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "TSN 2",
+        "name": "TSN 2",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d629d6a9bc_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "DSports 2 Shaka",
+        "name": "DSports 2",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d4dbb56093_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/1nyaler.streamhostingcdn.top\/stream\/106\/index.m3u8",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "fox_sports_uhd",
+        "name": "FOX SPORTS UHD (ENG)",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/fc414fedcd_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte.cache.aiv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/ajfoeddkbz\/out\/v1\/b78800b9b2304879b15843f455836829\/cenc.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/gru-nitro\/live\/clients\/dash\/enc\/ajfoeddkbz\/out\/v1\/b78800b9b2304879b15843f455836829\/cenc.mpd",
+                "priority": 2
+            },
+            {
+                "url": "https:\/\/otte.cache.aiv-cdn.net\/iad-nitro\/live\/clients\/enc\/fqlhwefqej\/out\/v1\/79e41681b80248788032c6880a06e7d3\/cenc.mpd",
+                "priority": 3
+            },
+            {
+                "url": "https:\/\/abgh3fbaaaaaaaambylpff72g6up6.ta.bia-cf.live.pv-cdn.net\/iad-nitro\/live\/dash\/enc\/ajfoeddkbz\/out\/v1\/b78800b9b2304879b15843f455836829\/cenc.mpd",
+                "priority": 4
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/pdx-nitro\/live\/clients\/dash\/enc\/9jiie2ephv\/out\/v1\/9e895e2c1c894a75ac6d21a4deddd5d3\/cenc.mpd",
+                "priority": 5
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "FOX 2",
+        "name": "FOX 2 (ENG)",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/fc414fedcd_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/abgh3fbaaaaaaaambylpff72g6up6.ta.bia-cf.live.pv-cdn.net\/iad-nitro\/live\/dash\/enc\/ajfoeddkbz\/out\/v1\/b78800b9b2304879b15843f455836829\/cenc.mpd",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "MATCH FOOTBALL",
+        "name": "MATCH FOOTBALL",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/3bd33158d0_MatchTV_Logo.svg",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/video.beeline.tv\/live\/d\/channel319.isml\/manifest-stb.mpd",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "ELTAShaka",
+        "name": "ELTA",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d2887f62be_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/www.rtmpcdn.com\/live\/elta.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/live01-cn-ali.bvjicd.com\/live\/74501104.m3u8",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "Servus TV",
+        "name": "Servus TV",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/8baa577797_86b00568-9b0a-4972-9692-d4dd286a7f55.jpeg",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/andro.evrenesoglu57.click\/checklist\/androstreamliveexn3.m3u8",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "Sportv",
+        "name": "Sportv",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d21649d411_sportv-logo-8.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte.cache.aiv-cdn.net\/bom-nitro\/live\/clients\/dash\/enc\/w8kwdfmlgs\/out\/v1\/3aa321e477504937a439b602e078eb18\/cenc.mpd",
+                "priority": 1
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "Caze TV",
+        "name": "Caze TV",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/73077a5e7f_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/a121aivottepl-a.akamaihd.net\/gru-nitro\/live\/clients\/dash\/enc\/jo3rmhhp2r\/out\/v1\/50656942ce4e40a1be824c9d83578fe9\/cenc.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/pdx-nitro\/live\/clients\/dash\/enc\/3ynrpdanq2\/out\/v1\/81fd4c26584044d2b1a1cc5b32fa9af0\/cenc.mpd",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "TSN",
+        "name": "TSN 3",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d629d6a9bc_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/abgh3fbaaaaaaaambylpff72g6up6.ta.bia-cf.live.pv-cdn.net\/iad-nitro\/live\/dash\/enc\/w0rehjjrwe\/out\/v1\/69a2a7041395406b970598f61680e7cf\/cenc.mpd",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "Caze TV 2",
+        "name": "Caze TV 2",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/73077a5e7f_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/otte-qw.live.pv-cdn.net\/lhr-nitro\/live\/clients\/dash\/enc\/iayg0kyrof\/out\/v1\/91dc04907f56415b897faccfa9d252da\/cenc.mpd",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/a121aivottepl-a.akamaihd.net\/gru-nitro\/live\/clients\/dash\/enc\/jo3rmhhp2r\/out\/v1\/50656942ce4e40a1be824c9d83578fe9\/cenc.mpd",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "FUSSBALL TV 4K",
+        "name": "FUSSBALL TV 4K",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/39d808a994_image.png",
+        "stream_type": "shaka",
+        "sources": [
+            {
+                "url": "https:\/\/da-50f11b292a028381000001120000000000000009.id.vx.tentcdn.eu\/wp\/at-live-7.tentcdn.eu\/bpk-tv\/WM_TV_1_UHD\/default\/index.mpd",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    },
+    {
+        "id": "beIN m3 tr",
+        "name": "beIN",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/b8c15da0b2_image.png",
+        "stream_type": "m3u",
+        "sources": [
+            {
+                "url": "https:\/\/andro.evrenesoglu57.click\/checklist\/androstreamliveexn4.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/nhjjhhjhjjhfjj.pages.dev\/1782601877\/756dff3bf63242728900fab86ae5869e\/CKNBZ7vok8P-_PEHmlLVipFRTbmgvi5xv8gU0s2IS38\/beinsportsmax-sa.m3u8",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "cctv_china___hd",
+        "name": "CCTV CHINA - HD",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/1f2f08c3c5_china-central-television-logo-png_seeklogo-468614.png",
+        "stream_type": "m3u",
+        "sources": [
+            {
+                "url": "https:\/\/live01-cn-ali.bvjicd.com\/live\/74501104.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/www.rtmpcdn.com\/live\/cctv5.m3u8",
+                "priority": 2
+            },
+            {
+                "url": "https:\/\/live.wxinxi.com\/live\/25816724_sb2maw7iluj1ghr92sk5siud28tpimx0.m3u8",
+                "priority": 3
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "ELTA",
+        "name": "ELTA",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/d2887f62be_image.png",
+        "stream_type": "m3u",
+        "sources": [
+            {
+                "url": "https:\/\/www.rtmpcdn.com\/live\/elta.m3u8",
+                "priority": 1
+            },
+            {
+                "url": "https:\/\/live01-cn-ali.bvjicd.com\/live\/74501104.m3u8",
+                "priority": 2
+            }
+        ],
+        "is_hidden": 0,
+        "cat": "Sports"
+    },
+    {
+        "id": "Servus TV m3",
+        "name": "Servus TV",
+        "logo": "https:\/\/fwatch.tv\/assets\/channel-img\/8baa577797_86b00568-9b0a-4972-9692-d4dd286a7f55.jpeg",
+        "stream_type": "m3u",
+        "sources": [
+            {
+                "url": "https:\/\/andro.evrenesoglu57.click\/checklist\/androstreamliveexn3.m3u8",
+                "priority": 1
+            }
+        ],
+        "cat": "Sports"
+    }
+]

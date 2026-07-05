@@ -102,12 +102,22 @@ $channels = [
     ['id'=>121,'name'=>'Disney Junior',         'cat'=>'Kids',    'logo'=>'DISNEY JUNIAR1745044475'],
     ['id'=>83, 'name'=>'Madani TV HD',          'cat'=>'Islamic', 'logo'=>'Madani-TV.png'],
     ['id'=>86, 'name'=>'Peace TV Bangla',       'cat'=>'Islamic', 'logo'=>'Peace-TV.png'],
-    ['id'=>'f1',  'name'=>'beIN Sports',      'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/b8c15da0b2_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://andro.evrenesoglu57.click/checklist/androstreamliveexn4.m3u8')) . '&m3u8=1'],
-    ['id'=>'f2',  'name'=>'CCTV CHINA - HD',  'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/1f2f08c3c5_china-central-television-logo-png_seeklogo-468614.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://live01-cn-ali.bvjicd.com/live/74501104.m3u8')) . '&m3u8=1'],
-    ['id'=>'f3',  'name'=>'DSports',          'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/d4dbb56093_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8')) . '&m3u8=1'],
-    ['id'=>'f4',  'name'=>'ELTA',             'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/d2887f62be_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://www.rtmpcdn.com/live/elta.m3u8')) . '&m3u8=1'],
-    ['id'=>'f5',  'name'=>'Servus TV',        'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/8baa577797_86b00568-9b0a-4972-9692-d4dd286a7f55.jpeg', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://andro.evrenesoglu57.click/checklist/androstreamliveexn3.m3u8')) . '&m3u8=1'],
 ];
+
+// Load fwatch channels dynamically
+$fwatchData = [];
+if (file_exists(__DIR__ . '/fwatch_channels.json')) {
+    $fwatchData = json_decode(file_get_contents(__DIR__ . '/fwatch_channels.json'), true);
+}
+foreach ($fwatchData as $fch) {
+    $channels[] = [
+        'id' => 'fwatch_' . str_replace(' ', '_', $fch['id']),
+        'name' => $fch['name'],
+        'cat' => 'Sports',
+        'logo' => $fch['logo'],
+        'sources' => $fch['sources']
+    ];
+}
 
 $catCounts = [];
 foreach ($channels as $ch) {
@@ -128,6 +138,8 @@ header('Content-Type: text/html; charset=utf-8');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.10/shaka-player.compiled.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.10/controls.css">
 <style>
 /* ═══════════════════════════════════════════
    RESET & DESIGN TOKENS
@@ -387,9 +399,7 @@ svg { display: block; }
   display: flex; align-items: center; justify-content: center;
   padding: 18px; transition: transform .28s;
 }
-.ch-thumb-inner img { max-width: 100%; max-height: 100%; object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,.6)); }
-
+.ch-thumb-inner img { max-width: 100%; max-height: 100%; object-fit: contain; }
 /* Broken/missing logo placeholder */
 .logo-ph {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -407,15 +417,12 @@ svg { display: block; }
 .ch-avatar .logo-ph .ph-txt, .nav-ch-thumb .logo-ph .ph-txt,
 .un-thumb .logo-ph .ph-txt, .watch-ch-avatar .logo-ph .ph-txt { display: none; }
 
-.live-tag {
-  position: absolute; bottom: 9px; left: 9px;
-  display: inline-flex; align-items: center; gap: 5px;
-  background: var(--accent); color: #fff;
-  font-size: .62rem; font-weight: 800;
-  border-radius: 6px; padding: 3px 7px; letter-spacing: .5px;
-  box-shadow: 0 2px 8px var(--accent-glow);
+.live-tag,
+.watch-live-badge,
+.un-live-tag,
+.live-pill {
+  display: none !important;
 }
-.live-tag .live-dot { background: #fff; box-shadow: none; width: 5px; height: 5px; }
 .ch-hover-play {
   position: absolute; inset: 0; background: rgba(0,0,0,.45);
   display: flex; align-items: center; justify-content: center;
@@ -1051,9 +1058,55 @@ function logoFail(img) {
   img.replaceWith(ph);
 }
 
+function getFailedChannels() {
+  try {
+    const data = JSON.parse(localStorage.getItem('failed_channels_v2') || '{}');
+    const now = Date.now();
+    const active = [];
+    let updated = false;
+    for (const [id, expiry] of Object.entries(data)) {
+      if (now < expiry) {
+        active.push(id);
+      } else {
+        updated = true;
+      }
+    }
+    if (updated) {
+      const cleanData = {};
+      active.forEach(id => { cleanData[id] = data[id]; });
+      localStorage.setItem('failed_channels_v2', JSON.stringify(cleanData));
+    }
+    return active;
+  } catch(e) {
+    return [];
+  }
+}
+
+function reportChannelError(ch, reason) {
+  try {
+    const data = JSON.parse(localStorage.getItem('failed_channels_v2') || '{}');
+    data[ch.id] = Date.now() + 3600 * 1000; // Hide for 1 hour
+    localStorage.setItem('failed_channels_v2', JSON.stringify(data));
+  } catch(e) {}
+  
+  // Log error on server
+  fetch(`proxy.php?log_error=1&ch_id=${ch.id}&ch_name=${encodeURIComponent(ch.name)}&reason=${encodeURIComponent(reason)}`)
+    .catch(()=>{});
+    
+  updateSidebarCounts();
+  renderGrid();
+  
+  // Show a toast message to user
+  showToast(`"${ch.name}" failed to play. Channel hidden.`);
+}
+
 function getFiltered() {
   const q = currentQuery.toLowerCase().trim();
+  const failedChs = getFailedChannels();
+  
   return CHANNELS.filter(c => {
+    if (failedChs.includes(String(c.id))) return false;
+    
     const isBdix = !isNaN(c.id);
     const isFwatch = String(c.id).startsWith('f');
     if (isBdix && !activeProviders.bdix) return false;
@@ -1203,35 +1256,142 @@ function updateWatchMeta(ch) {
 }
 
 // ── Stream loading ────────────────────────────
-function loadMainStream(ch) {
-  const video = document.getElementById('mainVideo');
-  const loader = document.getElementById('playerLoader');
-  loader.classList.remove('hide');
-  loader.querySelector('.player-loader-txt').textContent = 'Loading stream...';
-  if (hlsMain) { hlsMain.destroy(); hlsMain = null; }
-  video.src = '';
-  currentStreamUrl = '';
+const rot13 = str => str.replace(/[a-zA-Z]/g, c => String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26));
+const deobfuscate = str => { if(!str)return ""; try{ return rot13(atob(str)); }catch(e){ return ""; } };
 
-  if (ch.url) {
-    currentStreamUrl = ch.url;
-    attachHLS(video, ch.url, () => loader.classList.add('hide'));
-    return;
+let currentSources = [];
+let currentSourceIndex = 0;
+
+function tryNextServer(ch) {
+  const nextIdx = currentSourceIndex + 1;
+  if (nextIdx < currentSources.length) {
+    console.log(`Server ${currentSourceIndex + 1} failed. Trying Server ${nextIdx + 1}...`);
+    loadMainStream(ch, nextIdx);
+  } else {
+    console.warn("All servers failed to play this channel.");
+    const loader = document.getElementById('playerLoader');
+    loader.classList.remove('hide');
+    loader.querySelector('.player-loader-txt').textContent = 'Stream unavailable. Try another channel.';
+    
+    // Auto-hide channel and report to error log
+    reportChannelError(ch, "All source servers failed to play");
   }
-
-  fetch(`proxy.php?stream=${ch.id}&json=1`)
-    .then(r => r.json())
-    .then(data => {
-      if (!data.url) throw new Error('no url');
-      currentStreamUrl = data.url;
-      attachHLS(video, data.url, () => loader.classList.add('hide'));
-    })
-    .catch(() => {
-      loader.classList.remove('hide');
-      loader.querySelector('.player-loader-txt').textContent = 'Stream unavailable. Use ← / → to try another channel.';
-    });
 }
 
-function attachHLS(video, url, onReady) {
+function loadMainStream(ch, serverIndex = 0) {
+  const video = document.getElementById('mainVideo');
+  const loader = document.getElementById('playerLoader');
+  
+  loader.classList.remove('hide');
+  loader.querySelector('.player-loader-txt').textContent = 'Loading stream...';
+  
+  // Clean up existing players
+  if (hlsMain) { hlsMain.destroy(); hlsMain = null; }
+  if (window.shakaPlayerInstance) {
+    window.shakaPlayerInstance.destroy();
+    window.shakaPlayerInstance = null;
+  }
+  video.src = '';
+  currentStreamUrl = '';
+  
+  // Determine source list
+  if (ch.url) {
+    currentSources = [{ url: ch.url }];
+  } else if (ch.sources && ch.sources.length > 0) {
+    currentSources = ch.sources;
+  } else {
+    currentSources = [{ url: `proxy.php?stream=${ch.id}&json=1`, type: 'proxy' }];
+  }
+  
+  currentSourceIndex = Math.min(Math.max(0, serverIndex), currentSources.length - 1);
+  
+  const selector = document.getElementById('serverSelectorContainer');
+  if (selector) { selector.style.display = 'none'; }
+  
+  const activeSource = currentSources[currentSourceIndex];
+  
+  if (activeSource.type === 'proxy') {
+    fetch(activeSource.url)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.url) throw new Error('no url');
+        currentStreamUrl = data.url;
+        attachStream(video, data.url, ch, currentSourceIndex);
+      })
+      .catch(() => {
+        tryNextServer(ch);
+      });
+  } else {
+    let streamUrl = activeSource.url;
+    if (activeSource.referer) {
+      streamUrl = `proxy.php?proxy_url=${encodeURIComponent(btoa(streamUrl))}&m3u8=1`;
+    }
+    currentStreamUrl = streamUrl;
+    attachStream(video, streamUrl, ch, currentSourceIndex);
+  }
+}
+
+async function attachStream(video, url, ch, serverIdx) {
+  const loader = document.getElementById('playerLoader');
+  const isDash = url.includes('.mpd');
+  
+  if (isDash) {
+    shaka.polyfill.installAll();
+    if (!shaka.Player.isBrowserSupported()) {
+      loader.classList.remove('hide');
+      loader.querySelector('.player-loader-txt').textContent = 'Shaka Player is not supported in this browser.';
+      return;
+    }
+    
+    const player = new shaka.Player(video);
+    window.shakaPlayerInstance = player;
+    
+    // Fetch DRM keys
+    if (String(ch.id).startsWith('fwatch_')) {
+      try {
+        const keyResponse = await fetch(`proxy.php?get_keys=1&ch=${encodeURIComponent(ch.id)}&sv=${serverIdx}`);
+        if (keyResponse.ok) {
+          const drmData = await keyResponse.json();
+          if (drmData && drmData.drm && drmData.key_id && drmData.key_value) {
+            const keyId = deobfuscate(drmData.key_id).trim();
+            const keyValue = deobfuscate(drmData.key_value).trim();
+            if (keyId && keyValue) {
+              player.configure({
+                drm: {
+                  clearKeys: {
+                    [keyId]: keyValue
+                  }
+                }
+              });
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Error setting clearKeys:", e);
+      }
+    }
+    
+    player.addEventListener('error', (event) => {
+      if (event.detail && event.detail.code === 7000) return;
+      if (event.detail.severity === shaka.util.Error.Severity.CRITICAL) {
+        tryNextServer(ch);
+      }
+    });
+    
+    try {
+      await player.load(url);
+      video.play().catch(()=>{});
+      loader.classList.add('hide');
+    } catch (e) {
+      console.error("Shaka load error:", e);
+      tryNextServer(ch);
+    }
+  } else {
+    attachHLS(video, url, () => loader.classList.add('hide'), () => tryNextServer(ch));
+  }
+}
+
+function attachHLS(video, url, onReady, onError) {
   if (Hls.isSupported()) {
     const hls = new Hls({ debug: false, enableWorker: true });
     hlsMain = hls;
@@ -1242,22 +1402,25 @@ function attachHLS(video, url, onReady) {
       if (onReady) onReady();
     });
     hls.on(Hls.Events.ERROR, (e, data) => {
-      // Show a message only on fatal errors. NEVER auto-advance — stay on channel.
       if (data.fatal) {
-        const loader = document.getElementById('playerLoader');
-        loader.classList.remove('hide');
-        loader.querySelector('.player-loader-txt').textContent = 'Stream error. Use ← / → to try another channel.';
+        if (hlsMain) { hlsMain.destroy(); hlsMain = null; }
+        if (onError) onError();
       }
     });
   } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
     video.src = url;
     video.addEventListener('canplay', () => { video.play(); if(onReady)onReady(); }, {once:true});
+    video.addEventListener('error', () => { if(onError)onError(); }, {once:true});
   }
 }
 
 function stopMainStream() {
   const video = document.getElementById('mainVideo');
   if (hlsMain) { hlsMain.destroy(); hlsMain = null; }
+  if (window.shakaPlayerInstance) {
+    window.shakaPlayerInstance.destroy();
+    window.shakaPlayerInstance = null;
+  }
   video.src = '';
   document.title = 'FLIX — Live TV';
 }
@@ -1375,6 +1538,8 @@ function hidePreloader() {
 
 // ── Check Server Speed on site visit ──
 (function checkServerSpeed() {
+  const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  
   fetch('proxy.php?check=1')
     .then(r => r.json())
     .then(data => {
@@ -1392,8 +1557,9 @@ function hidePreloader() {
         hasFwatch = !!data.providers.fwatch;
       }
       
-      activeProviders.bdix = hasBdix;
-      activeProviders.fwatch = hasFwatch;
+      // On localhost, always display all channels for developer testing/debugging
+      activeProviders.bdix = isLocalhost ? true : hasBdix;
+      activeProviders.fwatch = isLocalhost ? true : hasFwatch;
       
       updateSidebarCounts();
       renderGrid();
@@ -1401,8 +1567,9 @@ function hidePreloader() {
     })
     .catch(e => {
       console.warn("Background server check failed:", e);
-      // Fail-safe: Assume BDIX is down on hosting if check fails
-      activeProviders.bdix = false;
+      // Fail-safe: Assume BDIX is down on live hosting, but keep enabled on localhost
+      activeProviders.bdix = isLocalhost ? true : false;
+      activeProviders.fwatch = true;
       updateSidebarCounts();
       renderGrid();
       hidePreloader();

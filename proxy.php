@@ -159,6 +159,53 @@ if (isset($_GET['check'])) {
             'fwatch' => $fwatchActive
         ]
     ]);
+}
+
+// ── 2.3 Log Channel Playback Errors ──
+if (isset($_GET['log_error'])) {
+    $chId = isset($_GET['ch_id']) ? $_GET['ch_id'] : 'unknown';
+    $chName = isset($_GET['ch_name']) ? $_GET['ch_name'] : 'unknown';
+    $reason = isset($_GET['reason']) ? $_GET['reason'] : 'unknown';
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $timestamp = date('Y-m-d H:i:s');
+    
+    $logLine = "[$timestamp] IP: $ip | Channel ID: $chId | Name: $chName | Reason: $reason\n";
+    @file_put_contents(__DIR__ . '/channel_errors.log', $logLine, FILE_APPEND | LOCK_EX);
+    
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'logged']);
+    exit;
+}
+
+// ── 2.5 Proxy get_keys from fwatch.tv ──
+if (isset($_GET['get_keys'])) {
+    $ch = isset($_GET['ch']) ? $_GET['ch'] : '';
+    $sv = isset($_GET['sv']) ? intval($_GET['sv']) : 0;
+    
+    // Clean up channel ID
+    $ch = str_replace('fwatch_', '', $ch);
+    $ch = str_replace('_', ' ', $ch); // Restore underscores to spaces for fwatch.tv API
+    $keyUrl = "https://fwatch.tv/get_keys.php?ch=" . urlencode($ch) . "&sv=" . $sv;
+    
+    $context = stream_context_create([
+        'http' => [
+            'method'  => 'GET',
+            'timeout' => 5,
+            'header'  => implode("\r\n", [
+                'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                "Referer: https://fwatch.tv/",
+            ]),
+        ]
+    ]);
+    
+    $res = @file_get_contents($keyUrl, false, $context);
+    if ($res !== false) {
+        header('Content-Type: application/json');
+        echo $res;
+    } else {
+        http_response_code(502);
+        echo json_encode(['error' => 'Failed to fetch DRM keys from fwatch.tv']);
+    }
     exit;
 }
 
