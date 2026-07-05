@@ -102,7 +102,18 @@ $channels = [
     ['id'=>121,'name'=>'Disney Junior',         'cat'=>'Kids',    'logo'=>'DISNEY JUNIAR1745044475'],
     ['id'=>83, 'name'=>'Madani TV HD',          'cat'=>'Islamic', 'logo'=>'Madani-TV.png'],
     ['id'=>86, 'name'=>'Peace TV Bangla',       'cat'=>'Islamic', 'logo'=>'Peace-TV.png'],
+    ['id'=>'f1',  'name'=>'beIN Sports',      'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/b8c15da0b2_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://andro.evrenesoglu57.click/checklist/androstreamliveexn4.m3u8')) . '&m3u8=1'],
+    ['id'=>'f2',  'name'=>'CCTV CHINA - HD',  'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/1f2f08c3c5_china-central-television-logo-png_seeklogo-468614.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://live01-cn-ali.bvjicd.com/live/74501104.m3u8')) . '&m3u8=1'],
+    ['id'=>'f3',  'name'=>'DSports',          'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/d4dbb56093_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8')) . '&m3u8=1'],
+    ['id'=>'f4',  'name'=>'ELTA',             'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/d2887f62be_image.png', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://www.rtmpcdn.com/live/elta.m3u8')) . '&m3u8=1'],
+    ['id'=>'f5',  'name'=>'Servus TV',        'cat'=>'Sports',  'logo'=>'https://fwatch.tv/assets/channel-img/8baa577797_86b00568-9b0a-4972-9692-d4dd286a7f55.jpeg', 'url'=>'proxy.php?proxy_url=' . urlencode(base64_encode('https://andro.evrenesoglu57.click/checklist/androstreamliveexn3.m3u8')) . '&m3u8=1'],
 ];
+
+$catCounts = [];
+foreach ($channels as $ch) {
+    $catCounts[$ch['cat']] = ($catCounts[$ch['cat']] ?? 0) + 1;
+}
+
 header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
@@ -730,9 +741,92 @@ svg { display: block; }
 .un-thumb{
     background:#fff;
 }
+
+/* ═══════════════════════════════════════════
+   SITE PRELOADER
+   ═══════════════════════════════════════════ */
+#sitePreloader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0c;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+#sitePreloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05);
+}
+.preloader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.preloader-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+.preloader-logo span {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.preloader-spinner-bar {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.preloader-progress {
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+  animation: loading-bar 1.5s infinite ease-in-out;
+}
+@keyframes loading-bar {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(150%); }
+  100% { transform: translateX(-100%); }
+}
+.preloader-status {
+  font-size: 0.85rem;
+  color: var(--dim);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
 </style>
 </head>
 <body>
+
+<!-- ═══ PRELOADER ═══ -->
+<div id="sitePreloader">
+  <div class="preloader-content">
+    <div class="preloader-logo">
+      <div class="logo-icon" style="background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-radius: 9px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 4px 14px var(--accent-glow);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+      </div>
+      FLIX<span>TV</span>
+    </div>
+    <div class="preloader-spinner-bar">
+      <div class="preloader-progress"></div>
+    </div>
+    <div class="preloader-status" id="preloaderStatus">Checking server connection...</div>
+  </div>
+</div>
+
 
 <!-- ═══ HEADER ═══ -->
 <header id="header">
@@ -782,32 +876,32 @@ svg { display: block; }
     <div class="sb-item" data-cat="Sports">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
       <span class="sb-text">Sports</span>
-      <span class="sb-count">18</span>
+      <span class="sb-count"><?= isset($catCounts['Sports']) ? $catCounts['Sports'] : 0 ?></span>
     </div>
     <div class="sb-item" data-cat="Bangla">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></span>
       <span class="sb-text">Bangla</span>
-      <span class="sb-count">25</span>
+      <span class="sb-count"><?= isset($catCounts['Bangla']) ? $catCounts['Bangla'] : 0 ?></span>
     </div>
     <div class="sb-item" data-cat="Hindi">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
       <span class="sb-text">Hindi</span>
-      <span class="sb-count">22</span>
+      <span class="sb-count"><?= isset($catCounts['Hindi']) ? $catCounts['Hindi'] : 0 ?></span>
     </div>
     <div class="sb-item" data-cat="English">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
       <span class="sb-text">English</span>
-      <span class="sb-count">24</span>
+      <span class="sb-count"><?= isset($catCounts['English']) ? $catCounts['English'] : 0 ?></span>
     </div>
     <div class="sb-item" data-cat="Kids">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></span>
       <span class="sb-text">Kids</span>
-      <span class="sb-count">10</span>
+      <span class="sb-count"><?= isset($catCounts['Kids']) ? $catCounts['Kids'] : 0 ?></span>
     </div>
     <div class="sb-item" data-cat="Islamic">
       <span class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg></span>
       <span class="sb-text">Islamic</span>
-      <span class="sb-count">2</span>
+      <span class="sb-count"><?= isset($catCounts['Islamic']) ? $catCounts['Islamic'] : 0 ?></span>
     </div>
   </div>
 </nav>
@@ -912,6 +1006,7 @@ let currentCat   = 'All';
 let currentQuery = '';
 let currentIdx   = -1;
 let currentPlayingId = null;   // id of the channel currently playing (for active highlight)
+let activeProviders = { bdix: true, fwatch: true };
 let filteredList = [...CHANNELS];
 let hlsMain      = null;
 let currentStreamUrl = '';
@@ -927,7 +1022,12 @@ function showToast(msg, dur=2200) {
   showToast._t = setTimeout(() => t.classList.remove('show'), dur);
 }
 
-function logoUrl(ch) { return LOGO(ch.logo); }
+function logoUrl(ch) {
+  if (ch.logo && (ch.logo.startsWith('http://') || ch.logo.startsWith('https://'))) {
+    return ch.logo;
+  }
+  return LOGO(ch.logo);
+}
 
 // Build a logo <img> that swaps itself for a clean SVG placeholder on error/missing.
 // `withName` shows the channel name as a caption inside large thumbnails.
@@ -953,10 +1053,15 @@ function logoFail(img) {
 
 function getFiltered() {
   const q = currentQuery.toLowerCase().trim();
-  return CHANNELS.filter(c =>
-    (currentCat === 'All' || c.cat === currentCat) &&
-    (!q || c.name.toLowerCase().includes(q))
-  );
+  return CHANNELS.filter(c => {
+    const isBdix = !isNaN(c.id);
+    const isFwatch = String(c.id).startsWith('f');
+    if (isBdix && !activeProviders.bdix) return false;
+    if (isFwatch && !activeProviders.fwatch) return false;
+    
+    return (currentCat === 'All' || c.cat === currentCat) &&
+           (!q || c.name.toLowerCase().includes(q));
+  });
 }
 
 // ── Sidebar ───────────────────────────────────
@@ -1107,6 +1212,12 @@ function loadMainStream(ch) {
   video.src = '';
   currentStreamUrl = '';
 
+  if (ch.url) {
+    currentStreamUrl = ch.url;
+    attachHLS(video, ch.url, () => loader.classList.add('hide'));
+    return;
+  }
+
   fetch(`proxy.php?stream=${ch.id}&json=1`)
     .then(r => r.json())
     .then(data => {
@@ -1225,14 +1336,77 @@ document.addEventListener('keydown', e => {
   }
 });
 
+function updateSidebarCounts() {
+  const counts = { All: 0, Sports: 0, Bangla: 0, Hindi: 0, English: 0, Kids: 0, Islamic: 0 };
+  
+  CHANNELS.forEach(ch => {
+    const isBdix = !isNaN(ch.id);
+    const isFwatch = String(ch.id).startsWith('f');
+    let visible = true;
+    if (isBdix && !activeProviders.bdix) visible = false;
+    if (isFwatch && !activeProviders.fwatch) visible = false;
+    
+    if (visible) {
+      counts.All++;
+      if (counts[ch.cat] !== undefined) {
+        counts[ch.cat]++;
+      }
+    }
+  });
+  
+  document.querySelectorAll('.sb-item[data-cat]').forEach(el => {
+    const cat = el.dataset.cat;
+    const countEl = el.querySelector('.sb-count');
+    if (countEl && counts[cat] !== undefined) {
+      countEl.textContent = counts[cat];
+    }
+  });
+}
+
+function hidePreloader() {
+  const loader = document.getElementById('sitePreloader');
+  if (loader) {
+    loader.classList.add('fade-out');
+    setTimeout(() => {
+      loader.remove(); // Remove completely from DOM
+    }, 450);
+  }
+}
+
 // ── Check Server Speed on site visit ──
 (function checkServerSpeed() {
   fetch('proxy.php?check=1')
     .then(r => r.json())
     .then(data => {
       console.log("Preferred server checked:", data.preferred);
+      
+      let hasBdix = false;
+      if (data.providers && data.providers.bdix !== undefined) {
+        hasBdix = !!data.providers.bdix;
+      } else if (data.latencies) {
+        hasBdix = Object.keys(data.latencies).length > 0;
+      }
+      
+      let hasFwatch = true;
+      if (data.providers && data.providers.fwatch !== undefined) {
+        hasFwatch = !!data.providers.fwatch;
+      }
+      
+      activeProviders.bdix = hasBdix;
+      activeProviders.fwatch = hasFwatch;
+      
+      updateSidebarCounts();
+      renderGrid();
+      hidePreloader();
     })
-    .catch(e => console.warn("Background server check failed:", e));
+    .catch(e => {
+      console.warn("Background server check failed:", e);
+      // Fail-safe: Assume BDIX is down on hosting if check fails
+      activeProviders.bdix = false;
+      updateSidebarCounts();
+      renderGrid();
+      hidePreloader();
+    });
 })();
 
 // ── URL param: ?ch=ID ─────────────────────────

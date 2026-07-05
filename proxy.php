@@ -110,6 +110,10 @@ if (isset($_GET['proxy_url'])) {
 
 // ── 2. Check Server Speed/Status ──
 if (isset($_GET['check'])) {
+    error_reporting(0);
+    @ini_set('display_errors', 0);
+    if (ob_get_length()) ob_clean();
+
     $hosts = ['10.99.99.99', 'redforce.live'];
     $results = [];
     foreach ($hosts as $host) {
@@ -117,7 +121,7 @@ if (isset($_GET['check'])) {
         $context = stream_context_create([
             'http' => [
                 'method'  => 'GET',
-                'timeout' => 2, // 2 seconds timeout for check
+                'timeout' => 1.2, // Faster timeout
                 'header'  => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\nReferer: http://$host/\r\n"
             ]
         ]);
@@ -127,6 +131,18 @@ if (isset($_GET['check'])) {
         }
     }
     
+    // Check fwatch HLS stream status
+    $fwatchTestUrl = "https://andro.evrenesoglu57.click/checklist/androstreamliveexn4.m3u8";
+    $fwatchContext = stream_context_create([
+        'http' => [
+            'method'  => 'GET',
+            'timeout' => 1.2,
+            'header'  => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n"
+        ]
+    ]);
+    $fwatchHtml = @file_get_contents($fwatchTestUrl, false, $fwatchContext);
+    $fwatchActive = ($fwatchHtml !== false);
+    
     $preferred = '10.99.99.99';
     if (!empty($results)) {
         asort($results); // sort by latency (ascending)
@@ -135,7 +151,14 @@ if (isset($_GET['check'])) {
     
     setcookie('preferred_provider', $preferred, time() + 86400, '/');
     header('Content-Type: application/json');
-    echo json_encode(['preferred' => $preferred, 'latencies' => $results]);
+    echo json_encode([
+        'preferred' => $preferred, 
+        'latencies' => $results,
+        'providers' => [
+            'bdix' => !empty($results),
+            'fwatch' => $fwatchActive
+        ]
+    ]);
     exit;
 }
 
